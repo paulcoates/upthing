@@ -1,3 +1,5 @@
+[![Build and publish a Docker image to ghcr.io](https://github.com/paulcoates/upthing/actions/workflows/docker-image.yml/badge.svg)](https://github.com/paulcoates/upthing/actions/workflows/docker-image.yml)
+
 ## About UpThing
 
 UpThing uses the [Up Bank API](https://github.com/up-banking/api/) to provide a web interface for displaying account information and managing Webhooks.

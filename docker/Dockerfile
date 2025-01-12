@@ -63,5 +63,4 @@ RUN echo "59 *    * * *   www-data    php /var/www/artisan schedule:run >> /dev/
 RUN chown -R www-data:www-data /var/www
 
 COPY ./docker/entrypoint.sh /
-COPY ./docker/wait-for-it.sh /usr/bin/
 ENTRYPOINT ["/entrypoint.sh"]

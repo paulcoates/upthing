@@ -1,0 +1,27 @@
+name: Build and publish a Docker image to ghcr.io
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Build and publish a Docker image for ${{ github.repository }}
+        uses: macbre/push-to-ghcr@v14
+        with:
+          image_name: paulcoates/upthing
+          dockerfile: ./docker/Dockerfile
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          image_tag: ${{ steps.vars.outputs.sha_short }}
